@@ -7,12 +7,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
-from src.components.data_transformation import DataTransformation
-from src.components.data_transformation import DataTransformationConfig
-
-from src.components.model_training import ModelTrainer
-from src.components.model_training import ModelTrainerConfig
-
 
 @dataclass
 class DataIngestionConfig():
@@ -28,7 +22,7 @@ class DataIngestion():
     def initiate_data_ingestion(self):
         logging.info('Entered data ingestion component')
         try:
-            df = pd.read_csv('notebook/data/stud.csv')
+            df = pd.read_csv('notebook/data/candidates.csv')
             logging.info('Read dataset as data frame')
 
             os.makedirs(os.path.dirname(
@@ -37,8 +31,12 @@ class DataIngestion():
             df.to_csv(self.ingestion_config.raw_data_path,
                       index=False, header=True)
             logging.info('Train test split initiated')
-            train_set, test_set = train_test_split(
-                df, train_size=0.2, random_state=42)
+
+            # train_set, test_set = train_test_split(
+            #     df, train_size=0.2, random_state=42)
+            # We don't have enough data to split into train and test
+            train_set = pd.read_csv('notebook/data/candidates.csv')
+            test_set = pd.read_csv('notebook/data/candidates.csv')
 
             train_set.to_csv(
                 self.ingestion_config.train_data_path, index=False, header=True)
@@ -57,10 +55,3 @@ class DataIngestion():
 if __name__ == "__main__":
     obj = DataIngestion()
     train_data, test_data = obj.initiate_data_ingestion()
-
-    data_transformation = DataTransformation()
-    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(
-        train_data, test_data)
-
-    model_trainer = ModelTrainer()
-    print(model_trainer.initiate_model_trainer(train_arr, test_arr))

@@ -7,4 +7,6 @@ catboost
 xgboost
 dill
 flask
+sentence_transformers
+tqdm
 # -e .
