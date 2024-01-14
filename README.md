@@ -20,28 +20,36 @@ We can use different metrics or algorithms and choose the best metric
  or Setup CI/CD with Circle CI
 
 ## Project folder structure
-.github
-artifacts
-logs
-notebook
-src 
-		components
-			`__init__.py`
-			`data_ingestion.py`
-			`data_tranformation.py`
-			`model_training.py`
-		pipeline
-			`__init__.py`
-			`train_pipeline.py`
-			`predict_pipeline.py`
-		`__init__.py`
-		`logger.py`
-		`exception.py`
-		`utils.py`
-tests
-`app.py`
-`setup.py`
-`requirements.txt`
+.github <br />
+
+artifacts <br />
+
+logs <br />
+
+notebook <br />
+
+src <br />
+		components <br />
+			`__init__.py` <br />
+			`data_ingestion.py` <br />
+			`data_tranformation.py` <br />
+			`model_training.py` <br />
+		pipeline <br />
+			`__init__.py` <br />
+			`train_pipeline.py` <br />
+			`predict_pipeline.py` <br />
+		`__init__.py` <br />
+		`logger.py` <br />
+		`exception.py` <br />
+		`utils.py` <br />
+  
+tests <br />
+
+`app.py` <br />
+
+`setup.py` <br />
+
+`requirements.txt` <br />
 		
 
 - .github - Contains a YAML workflow that automates tasks such as building, testing, and deploying your code. We can replace this with .circleci if we want to use circle CI for CI/CD
